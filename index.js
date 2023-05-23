@@ -40,15 +40,17 @@ app.use((req,res,next)=>{
 })
 
 app.post("/query",async (req,res)=>{
-    const body = req.body
     try{
+        const body = req.body
+        log.debug(JSON.stringify(body))
         var result = await Database.query(body.query)
         if(result){
             res.json(result);
         }
         res.json({ "error": "unknown"})
     }catch(error){
-        res.json({ "error": error})
+        log.error(error)
+        res.json({ "error": `${error}`})
     }
 })
 
@@ -59,7 +61,7 @@ app.post("/version",async (req,res)=>{
 app.use("/",express.static("./www"))
 
 app.get("*", (req,res)=>{
-    res.render(path.join(__dirname,"view/404.ejs"),{
+    res.status(404).render(path.join(__dirname,"view/404.ejs"),{
         path: req.path
     })
 })

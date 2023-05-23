@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Query</title>
+    <script src="/javascript/jquery.js"></script>
+</head>
+<body>
+    <script defer>
+        const body = $("body")
+
+        const textinput = $("<textarea>").appendTo(body)
+
+
+        const btn = $("<button>").text("query").appendTo(body)
+        
+        const result = $("<div>").appendTo(body)
+        
+        btn.on("click",async ()=>{
+            var reponce = await $.ajax({
+                method: "POST",
+                data: JSON.stringify({
+                    query: textinput.val()
+                }),
+                url: "/query"
+            })
+
+            result.text(JSON.stringify(reponce))
+        })
+    </script>
+</body>
+</html>
