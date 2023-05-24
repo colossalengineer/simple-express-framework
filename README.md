@@ -32,7 +32,13 @@ database = web
 
 create a post request using jquery
 
+Add these two files to the head of you HTMl page:
 ```html
-  
+    <script src="/javascript/jquery.js"></script>
+    <script src="/javascript/database.js"></script>
 ```
-replace Query St
+
+In you own javascript file call this function to make a database query:
+```js
+    await query("your query string");
+```
