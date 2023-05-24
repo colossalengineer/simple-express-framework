@@ -24,6 +24,7 @@ https://github.com/StarlaneStudios/Surrealist/releases/download/v1.7.0/surrealis
 
 create a post request using jquery
 
-```js
+```html
   
 ```
+replace Query St
