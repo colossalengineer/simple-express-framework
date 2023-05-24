@@ -16,6 +16,9 @@ urls work by / will get the index.html file in the www folder
 
 double click the start.bat file to start the server
 
+## UI for DB
+
+https://github.com/StarlaneStudios/Surrealist/releases/download/v1.7.0/surrealist-v1.7.0-windows.msi
 
 ## database querys
 
