@@ -11,7 +11,19 @@ log = new Logger("index.js")
 
 process.on('uncaughtException', function(err) {
         log.error('Caught exception: ' + err);
-    });
+});
+var child_process = require('child_process');
+process.on('exit', function (){
+    console.log("bye")
+    child_process.exec("taskkill /F /im surreal.exe")
+    child_process.exec("taskkill /F /im node.exe")
+    child_process.exec("taskkill /F /im OpenConsole.exe")
+});process.on('SIGINT', function (){
+    console.log("bye")
+    child_process.exec("taskkill /F /im surreal.exe")
+    child_process.exec("taskkill /F /im node.exe")
+    child_process.exec("taskkill /F /im OpenConsole.exe")
+});
 
 log.addinfomessage("STARTING")
 log.addinfomessage(log.dateFormat())
