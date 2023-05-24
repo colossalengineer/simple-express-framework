@@ -20,6 +20,11 @@ double click the start.bat file to start the server
 
 https://github.com/StarlaneStudios/Surrealist/releases/download/v1.7.0/surrealist-v1.7.0-windows.msi
 
+username = root
+password = root
+namespace = web
+database = web
+
 ## database querys
 
 create a post request using jquery
