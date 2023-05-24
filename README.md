@@ -23,3 +23,7 @@ https://github.com/StarlaneStudios/Surrealist/releases/download/v1.7.0/surrealis
 ## database querys
 
 create a post request using jquery
+
+```js
+  
+```
