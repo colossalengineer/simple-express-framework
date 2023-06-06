@@ -8,17 +8,21 @@ var child_process = require('child_process');
 child_process.exec(`start ./database/surreal.exe start --log debug --user root --pass root "file:${path.join(__dirname,"database/DB")}"`);
 
 process.on('uncaughtException', function(err) {
-        log.error('Caught exception: ' + err);
+        // log.error('Caught exception: ' + err);
 });
 
+let interval
 
 process.on('exit', function (){
     console.log("bye")
+    clearInterval(interval)
     child_process.exec("taskkill /F /im surreal.exe")
     child_process.exec("taskkill /F /im node.exe")
     child_process.exec("taskkill /F /im OpenConsole.exe")
-});process.on('SIGINT', function (){
+});
+process.on('SIGINT', function (){
     console.log("bye")
+    clearInterval(interval)
     child_process.exec("taskkill /F /im surreal.exe")
     child_process.exec("taskkill /F /im node.exe")
     child_process.exec("taskkill /F /im OpenConsole.exe")

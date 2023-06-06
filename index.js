@@ -86,16 +86,19 @@ const log = new Logger();
 var child_process = require('child_process');
 child_process.exec(`start ./database/surreal.exe start --log debug --user root --pass root "file:${path.join(__dirname, "database/DB")}"`);
 process.on('uncaughtException', function (err) {
-    log.error('Caught exception: ' + err);
+    // log.error('Caught exception: ' + err);
 });
+let interval;
 process.on('exit', function () {
     console.log("bye");
+    clearInterval(interval);
     child_process.exec("taskkill /F /im surreal.exe");
     child_process.exec("taskkill /F /im node.exe");
     child_process.exec("taskkill /F /im OpenConsole.exe");
 });
 process.on('SIGINT', function () {
     console.log("bye");
+    clearInterval(interval);
     child_process.exec("taskkill /F /im surreal.exe");
     child_process.exec("taskkill /F /im node.exe");
     child_process.exec("taskkill /F /im OpenConsole.exe");
@@ -147,7 +150,7 @@ const Surreal = require('surrealdb.js');
 log.info("Connecting to databse");
 let Database;
 (async () => {
-    const interval = setInterval(async () => {
+    interval = setInterval(async () => {
         try {
             log.info("connecting to DB");
             Database = new Surreal.default('http://127.0.0.1:8000/rpc');
@@ -160,7 +163,6 @@ let Database;
             await Database.use(Config.DBNamespace, Config.DBDataBase);
             log.info("Connected to databse");
             clearInterval(interval);
-            console.log(await Database.query("info for db"));
         }
         catch (e) {
             log.error(`Database Login: ${e}`);

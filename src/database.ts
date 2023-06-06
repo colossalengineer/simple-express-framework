@@ -5,7 +5,7 @@ log.info("Connecting to databse")
 let Database
 
 (async () => {
-	const interval = setInterval(
+		interval = setInterval(
 		async ()=>{
 			try {
 
@@ -25,8 +25,6 @@ let Database
 		
 				log.info("Connected to databse")
 				clearInterval(interval)
-
-				console.log(await Database.query("info for db"))
 		
 			} catch (e) {
 		
