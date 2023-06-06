@@ -24,7 +24,7 @@
                     query: "INFO for DB"
                 }))
                 
-            var reponce = await query("INFO for DB")
+            var reponce = await query(textinput.val())
 
             result.text(JSON.stringify(reponce))
         })
