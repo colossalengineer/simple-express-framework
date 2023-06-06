@@ -1,12 +1,14 @@
 // Config.js
+const fs = require("fs");
+const path = require("path")
+
 const dotenv = require('dotenv');
 dotenv.config();
-const fs = require("fs")
 
 // Version
 let package = JSON.parse(fs.readFileSync("./package.json",{encoding: "utf8"}))
 
-module.exports = {
+const Config = {
     version: package.version,
     port: process.env.PORT,
     lineBreak: process.env.BREAK,

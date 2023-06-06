@@ -14,7 +14,7 @@ process.on('exit', function (){
     child_process.exec("taskkill /F /im OpenConsole.exe")
 });
 
-child_process.exec(`start ./database/surreal.exe start --log debug --user root --pass root "file:${path.join(__dirname,"database/DB")}"`);
+
 
 
 child_process.exec(`start cmd.exe /K node index.js`);

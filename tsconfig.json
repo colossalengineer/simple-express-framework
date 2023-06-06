@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "outFile": "index.js",
+        "target": "ESNext"
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
