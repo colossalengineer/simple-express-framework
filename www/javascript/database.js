@@ -1,9 +1,9 @@
 async function query(query){
     return await $.ajax({
         method: "POST",
-        data: JSON.stringify({
+        data: {
             query: query
-        }),
+        },
         url: "/query"
     })
 }

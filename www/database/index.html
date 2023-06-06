@@ -20,13 +20,11 @@
         const result = $("<div>").appendTo(body)
         
         btn.on("click",async ()=>{
-            var reponce = await $.ajax({
-                method: "POST",
-                data: JSON.stringify({
-                    query: textinput.val()
-                }),
-                url: "/query"
-            })
+            console.log(JSON.stringify({
+                    query: "INFO for DB"
+                }))
+                
+            var reponce = await query("INFO for DB")
 
             result.text(JSON.stringify(reponce))
         })
